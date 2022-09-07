@@ -1,4 +1,4 @@
-*Enunciado*
+# Enunciado
 Crie um Rest controller, incluindo as APIs:
 
 1. /hello: Retorne uma mensagem de Hello!
