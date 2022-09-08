@@ -3,11 +3,11 @@ package org.acme.services;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 
 import io.quarkus.logging.Log;
 
-@RequestScoped
+@ApplicationScoped
 public class GreetingService {
 
     public String hello() {
