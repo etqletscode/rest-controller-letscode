@@ -1,7 +1,6 @@
 package org.acme.rest;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -51,7 +50,7 @@ public class ProdutoResource {
     @Operation(summary = "Salva produto", description = "Salva um novo produto")
     @APIResponse(responseCode = "201", description = "Salvo com sucesso", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Produto.class)) })
-    public Response salvar(final @Valid Produto request) throws Exception {
+    public Response salvar(final Produto request) throws Exception {
         return Response.status(Response.Status.CREATED).entity(service.salvar(request)).build();
     }
 
@@ -62,7 +61,7 @@ public class ProdutoResource {
     @Operation(summary = "Atualiza produto", description = "Atualiza produto existente")
     @APIResponse(responseCode = "200", description = "Atualizado com sucesso", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Produto.class)) })
-    public Response atualizar(final @Valid Produto request) throws Exception {
+    public Response atualizar(final Produto request) throws Exception {
         return Response.status(Response.Status.OK).entity(service.atualizar(request)).build();
     }
 

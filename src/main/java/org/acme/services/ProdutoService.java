@@ -27,7 +27,7 @@ public class ProdutoService {
     ProdutoConverter converter;
 
     @Transactional
-    public Produto salvar(Produto novoProduto) {
+    public Produto salvar(@Valid Produto novoProduto) {
         final ProdutoEntity produtoEntity = converter.convertProductTo(novoProduto);
         repository.persist(produtoEntity);
         return converter.convertEntityTo(produtoEntity);
@@ -53,7 +53,7 @@ public class ProdutoService {
     }
 
     @Transactional
-    public Produto atualizar(Produto produtoAtualizado) {
+    public Produto atualizar(@Valid Produto produtoAtualizado) {
         final ProdutoEntity produtoSalvo = ProdutoEntity.findById(produtoAtualizado.getId());
         if (produtoSalvo == null) {
             throw new RuntimeException();
