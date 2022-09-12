@@ -7,13 +7,17 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.acme.converter.ClienteConverter;
 import org.acme.converter.PedidoConverter;
+import org.acme.entity.ClienteEntity;
 import org.acme.entity.PedidoEntity;
 import org.acme.models.Cliente;
 import org.acme.models.ItemPedido;
 import org.acme.models.Pedido;
 import org.acme.models.PedidoResponse;
+import org.acme.repository.ClienteRepository;
 import org.acme.repository.PedidoRepository;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @RequestScoped
 public class PedidoService {
@@ -24,12 +28,16 @@ public class PedidoService {
     @Inject
     PedidoConverter converter;
 
+    @Inject
+    JsonWebToken jwt;
+
+    @Inject
+    ClienteService clienteService;
+
     @Transactional
     public PedidoResponse salvar(Set<ItemPedido> listaProdutos) {
         Pedido pedido = new Pedido();
-        Cliente cliente = new Cliente();
-        cliente.setId(1L);
-        pedido.setCliente(cliente);
+        pedido.setCliente(clienteService.findByEmail(jwt.getSubject()));
         pedido.setHorarioRegistro(LocalDateTime.now());
         pedido.setListaProdutos(listaProdutos);
         PedidoEntity pedidoEntity = converter.convertDtoTo(pedido);
