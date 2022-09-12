@@ -16,3 +16,5 @@ insert into `produto` (`nome`, `descricao`, `preco`, `desconto`, `estoque`, foto
 insert into `produto` (`nome`, `descricao`, `preco`, `desconto`, `estoque`, foto) values ('Video game','Melhor Video game do mundo.',750.5,10.4,50,'foto-Video game.jpg');
 insert into `produto` (`nome`, `descricao`, `preco`, `desconto`, `estoque`, foto) values ('Almofada','Melhor Almofada do mundo.',150.5,10.4,50,'foto-Almofada.jpg');
 insert into `produto` (`nome`, `descricao`, `preco`, `desconto`, `estoque`, foto) values ('Lustre','Melhor Lustre do mundo.',150.5,10.4,50,'foto-Lustre.jpg');
+
+insert into `cliente` (`nome`, `cpf`, `email`, `senha`, `perfil`) values ('Admin','11111111111','admin@admin.com','d033e22ae348aeb5660fc2140aec35850c4da997', 'CLIENTE');
